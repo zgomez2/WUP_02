@@ -1,0 +1,73 @@
+---
+title: "cat vs numeric"
+author: "Dr K"
+date: "March 19, 2019"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## exploring the searchpath  
+
+This is insight in what R does when you issue the library or require commands.  In the console type in the command searchpaths() and execute it {hit the enter key}.  
+Now we will load the dplyr library in the console with the command  
+library(dplyr) and then re-issue the searchpaths() command.  
+Now enter the command require(ggplot2) in the console and again repeat the command searchpaths().  It turns out that the two commands library and require do exactly the same thing. They both modify the order of things in the searchpath.  
+
+Now go back and remove dplyr and ggplot2 from the search path with the commands  
+detach(package:dplyr)  
+detach(package:ggplot2)  
+
+and redo the library or require commands but in the opposite order  - first with ggplot2 and second with dplyr then issue the searchpaths command once more - what changed?  
+
+##How to do a t.test when there are more than two factor levels  
+
+The t-test is the normal workhorse when looking at categorical vs numerical data.  We will later explore one-way Anova which is and approach for dealing with 3 or more categorical levels but for now we will show how to refine our data so that it just contains the two factor level we are interested in.  
+
+##The chickwt dataset 
+
+We assign the chickwts data set to a variable we choose to call mydata
+
+```{r}
+mydata = chickwts
+```
+
+take a look at mydata
+
+```{r}
+str(mydata)
+```
+
+now suppose we want to see the levels of the factor variable feed.
+
+```{r}
+levels(mydata$feed)
+```
+suppose I have a bunch of meatmeal and sunflower. Which feed will give me fatter chickens?
+
+```{r eval=FALSE}
+t.test(weight~feed,data=mydata)
+```
+
+Rats, that no worky! --- too many levels ---
+how to pare it down???
+
+##We use the dplyr tool to create a new dataset that just has two levels of feed  
+
+```{r}
+library(dplyr)
+mydata2 = filter(mydata,feed=="meatmeal"|feed=="sunflower")
+boxplot(weight~feed,data=mydata2)
+mydata2 = droplevels(mydata2)
+boxplot(weight~feed,data=mydata2)
+```
+
+now lets try that t-test again
+
+```{r }
+t.test(weight~feed,data=mydata2)
+```
+  
+##Now show you can do this by comparing horsebean with soybean as chicken feed.  Turn in your knitted markdown file as proof of attendence. 
