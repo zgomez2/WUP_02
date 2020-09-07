@@ -19,14 +19,13 @@ veggy <- cabbages
 <!--In this section you explain what you are trying to show.  Where did the data come from?  What is the research or other question you are trying to answer?!-->
  The cabbages data from the MASS package is loaded into a dataframe called veggy. Complete this report by answering the following two questions  
  
-### 1 - is there a difference in average HeadWt between c39 and c52 cultivation methods?   
-### 2 - is there a difference in average VitC between c39 and c52 cultivation methods?  
+### Is there a difference in average VitC between c39 and c52 cultivation methods?  
 
 # Methods
 
 <!--Decide on your methods:  use "variable analysis" or other appropriate descriptors.  Make sure to choose at least one graphical method and at least one numerical method.!-->
 
-#Results
+# Results
 
 <!--Divide this section into two sub-sections:  One for your descriptive  results and one for your inferential results.!-->
 
