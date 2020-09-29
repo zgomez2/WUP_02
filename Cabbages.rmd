@@ -34,16 +34,30 @@ veggy <- cabbages
 ### Graphical Descriptive Results
 
 <!--Graphical results here.  Make sure to show your code.  Provide appropriate labels for axes, giving units if possible, and provide a good title for the graph, too.  Use the graphical results to describe the patterns if any that exist in the data as focused toward the research question!-->
+### Plot boxplots
+
+```{r}
+plot(VitC~Cult,data=veggy)
+```
+
+
+This chart shows that c52 has higher levels of  VitC compared to c39.Its higher by about 25 more vitC.
+
 
 ### Numerical Descriptive Results
-
+```{r}
+favstats(VitC~Cult,data=veggy)
+```
 <!--Numerical results go here. Use the numerical results to describe the patterns if any that exist in the data as focused toward the research question!-->
-
+C 52 average level of vitC is 64 which is almost 15 above that of c39 that  is 51 .C39 is lower level of vitc compared to c52 for example the minimum for c39 is 41 and for c52 is 47.
 ## Inferential Results
-
+```{r}
+t.test(VitC~Cult,data=veggy)
+```
 <!--State hypothesis clearly.  Make sure your discussion of the inferential test covers all the aspects that the test output produces, such as test statistic, p-value etc.  Make a decision about the null hypothesis, explain the assumptions on which the selected test/procedure was based, and why the chosen procedure satisfys the assumptions and is appropriate to answer the research question!-->
-
+$H_0$ There is no difference.The chances of the results is very unlikely 1 in less than one billion . 0.00000003405 if the null hypothesis is true . I am going to reject the null idea that the hypothesis is true .
 
 # Discussion and Conclusion
 
 <!--Discussion and conclusion here.  If you found a relationship be sure to consider whether the relationship occurs because one of the variavbles causes the other, or whether they perhasps are related for some other reason.  Watch the chapter 6 videos from the GeorgeTown videos collection.!-->
+Based on the data above ,c52 has a higher level of vitc with a high average of 64.4 which beats c39's average of 51.5.The p value shows us that the chances of those same results reoccurring  is very unlikely never to occur with a 0.0000000 chance .It appears there is no relationship between these two variables data .Therefore there is no relationship between the two.
